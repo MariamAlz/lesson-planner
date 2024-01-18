@@ -1,0 +1,21 @@
+{% extends 'layouts/main.html' %}
+
+{% block title %}Plan{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <h1>Lesson Plan</h1>
+  <p>Subject: {{ subject }}</p>
+  <p>Grade: {{ grade }}</p>
+  <p>Duration: {{ duration }}</p>
+  <p>Title: {{ title }}</p>
+  <p>Objectives: {{ objectives }}</p>
+
+  <h2>Generated Lesson Plan:</h2>
+  <pre>{{ lesson_plan }}</pre>
+
+  <a href="{{ url_for('download_text', plan=lesson_plan) }}" class="btn btn-primary">Download Plan</a>
+</div>
+
+{% endblock %}

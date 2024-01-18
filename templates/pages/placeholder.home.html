@@ -1,0 +1,113 @@
+{% extends 'layouts/main.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="page-header text-center">
+  <h1 class="display-4">TeachGenius: Simplify Lesson Planning with AI</h1>
+</div>
+
+<style>
+  .page-header {
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+</style>
+
+<div class="container">
+  <div class="lesson-generator">
+    <h2 class="text-center">Lesson Plan Generator</h2>
+    <form id="lessonPlanForm">
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <select class="form-control" id="subject" required>
+          <option value="math">Math</option>
+          <option value="science">Science</option>
+          <option value="history">History</option>
+          <option value="geography">Geography</option>
+          <option value="ai">Artificial Intelligence</option>
+          <!-- Add more subjects as needed -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="grade">Grade:</label>
+        <select class="form-control" id="grade" required>
+          <option value="1">1st Grade</option>
+          <option value="2">2nd Grade</option>
+          <option value="3">3rd Grade</option>
+          <option value="4">4th Grade</option>
+          <option value="5">5th Grade</option>
+          <option value="6">6th Grade</option>
+          <option value="7">7th Grade</option>
+          <option value="8">8th Grade</option>
+          <option value="9">9th Grade</option>
+          <option value="10">10th Grade</option>
+          <option value="11">11th Grade</option>
+          <option value="12">12th Grade</option>        
+          <!-- Add more grade levels as needed -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="duration">Duration:</label>
+        <select class="form-control" id="duration" required>
+          <option value="30">30 minutes</option>
+          <option value="45">45 minutes</option>
+          <option value="60">1 hour</option>
+          <option value="90">1.5 hours</option>
+          <option value="120">2 hours</option>
+          <!-- Add more duration options as needed -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="title">Title (optional):</label>
+        <input type="text" class="form-control" id="title" placeholder="Enter lesson title" required>
+      </div>
+      <div class="form-group">
+        <label for="objectives (Optional)">Objectives (optional):</label>
+        <input type="text" class="form-control" id="objectives" placeholder="Enter objectives of the lesson" required>
+      </div>
+      <div class="text-center">
+        <button onclick="generatePlan()" type="submit" class="btn btn-primary">Generate Plan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function generatePlan(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    // Get the form input values
+    var subject = document.getElementById('subject').value;
+    var grade = document.getElementById('grade').value;
+    var duration = document.getElementById('duration').value;
+    var title = document.getElementById('title').value;
+    var objectives = document.getElementById('objectives').value;
+
+
+    // Perform form validation
+    if (title === "" || objectives === "") {
+      // Display an error message or perform any necessary UI updates
+      alert("Please fill in all fields");
+      return;
+    }
+
+    // Build the URL with the form values as query parameters
+    var url = "/plan?subject=" + encodeURIComponent(subject) +
+              "&grade=" + encodeURIComponent(grade) +
+              "&duration=" + encodeURIComponent(duration) +
+              "&title=" + encodeURIComponent(title) +
+              "&objectives=" + encodeURIComponent(objectives);
+
+    // Redirect the user to the new page
+    window.location.href = url;
+  }
+
+  // Attach the form submission event listener
+  document.getElementById('lessonPlanForm').addEventListener('submit', generatePlan);
+</script>
+
+
+{% endblock %}
