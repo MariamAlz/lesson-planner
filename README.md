@@ -1,3 +1,11 @@
+# Lesson Planner
+
+> **Competition:** Digicode-Ed Challenge · the UAE's first contest to build an educational tool with ChatGPT for teachers, by the UAE Artificial Intelligence, Digital Economy and Remote Work Applications Office and The Digital School
+
+A ChatGPT-powered tool, built with Flask, that helps teachers create lesson plans tailored to their students.
+
+---
+
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Welcome
